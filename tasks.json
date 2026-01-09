@@ -1,0 +1,14 @@
+[
+     {"id":1,
+      "title":"Morning Workout",
+      "status":"completed"
+    },
+     {"id":2, 
+     "title":"Revise JS",
+     "status":"in progress"
+    },
+    {"id":3,
+        "title":"Grocery Shopping",
+        "status":"not started"
+    }
+]
