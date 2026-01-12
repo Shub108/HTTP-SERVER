@@ -30,6 +30,27 @@ app.post("/api/tasks",(req,res)=>{
     return res.status(201).json(newtask); // 201 status code indicates that the request has been fulfilled and has resulted in one or more new resources being created.
 });
 
+app.delete("/api/tasks/:id",(req,res)=>{
+    const id=Number(req.params.id);
+    const tasktToDelete= tasks.find(el=>el===el.id);
+    let index= tasks.indexOf(taskToDelete);
+    tasks.splice(index,1);
+    if(!taskToDelete){
+        return res.status(404).json({status:"fail", message:"task not found with" +id+"to delete"});
+    }
+    fs.writeFile('./tasks.json',JSON.stringify(tasks),(err)=>{
+        res.status(204).json({
+            status:"success",
+            data:{
+                task:taskToDelete
+            }
+        })
+    });
+    
+
+    
+});
+
 
 
 app.listen(3000, (error) => {
